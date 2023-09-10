@@ -41,12 +41,22 @@ export default function NavMenu() {
         </Link>
         <Link href="/protected">
           <li className={pathname === "/protected" ? tmp1 : tmp2}>
-            protected routes
+            Protected route
           </li>
         </Link>
         <Link href="/serverAction">
           <li className={pathname === "/serverAction" ? tmp1 : tmp2}>
-            serverAction
+            Server action
+          </li>
+        </Link>
+        <Link href="/apiFromClient">
+          <li className={pathname === "/apiFromClient" ? tmp1 : tmp2}>
+            API From Client
+          </li>
+        </Link>
+        <Link href="/apiFromServer">
+          <li className={pathname === "/apiFromServer" ? tmp1 : tmp2}>
+            API From Server
           </li>
         </Link>
       </ul>
