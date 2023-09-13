@@ -1,7 +1,8 @@
 "use client";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
-import ChannelUI from "./ChannelUI";
+import NavigationServers from "./NavigationServers";
+import { ModeToggle } from "./ModeToggle";
 
 function AuthButton() {
   const { data: session } = useSession();
@@ -27,9 +28,10 @@ function AuthButton() {
 const Navbar = () => {
   const pathname = usePathname();
   return (
-    <nav className="w-[150px] h-screen bg-slate-700">
+    <nav className="w-[150px] h-screen">
       <AuthButton />
-      <ChannelUI pathname={pathname} />
+      <NavigationServers pathname={pathname} />
+      <ModeToggle />
     </nav>
   );
 };
