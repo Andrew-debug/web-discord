@@ -25,7 +25,7 @@ export default async function RootLayout({
         <SessionProvider session={session}>
           <main className="flex">
             <Navbar />
-            <ChannelMenu />
+            {/* <ChannelMenu /> */}
             {children}
           </main>
         </SessionProvider>

@@ -1,6 +1,4 @@
-"use client";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 
 const channlesObs = [
   {
@@ -14,25 +12,15 @@ const channlesObs = [
   },
 ];
 
-interface ChannelUIProps {
-  selectedChannel: string | null;
-  setSelectedChannel: (v: string) => void;
-}
-
-// const ChannelUI = ({ selectedChannel, setSelectedChannel }: ChannelUIProps) => {
-const ChannelUI = ({}: {
-  //   searchParams: { [key: string]: string | string[] | undefined };
-}) => {
-  const searchParams = useSearchParams();
-  const selectedChannel = searchParams.get("channel");
+const ChannelUI = ({ pathname }: { pathname: string }) => {
   return (
     <>
       {channlesObs.map((item, index) => (
         <Link
-          href={`?channel=${item.name}`}
+          href={`/${item.name}?section=general`}
           key={index}
-          className={`${
-            selectedChannel === item.name ? "text-red-500" : "text-blue-600"
+          className={`text-${
+            pathname === `/${item.name}` ? "red-500" : "blue-500"
           } block`}
         >
           {item.name}
