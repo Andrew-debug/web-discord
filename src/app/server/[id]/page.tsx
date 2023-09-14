@@ -1,11 +1,8 @@
-import Home from "@/components/serverUI/Home";
 import { headers } from "next/headers";
-import Link from "next/link";
+import ServerMain from "@/components/serverUI/ServerMain";
+import ServerNavbar from "@/components/serverUI/ServerNavbar";
 
-const tmp1 = "py-1 px-2 text-gray-300 bg-gray-700";
-const tmp2 = "py-1 px-2 text-blue-800 hover:text-gray-300 hover:bg-gray-700";
-
-const Channel = async ({
+const Server = async ({
   params: { id },
   searchParams,
 }: {
@@ -22,26 +19,10 @@ const Channel = async ({
 
   return (
     <div className="flex w-full">
-      <div className="min-w-[300px] bg-slate-500">
-        {response[id].sections.map((section: string, index: number) => (
-          <Link
-            key={index}
-            href={`?${new URLSearchParams({ section: section })}`}
-            className={`${selectedSection === section ? tmp1 : tmp2} block`}
-          >
-            {section}
-          </Link>
-        ))}
-      </div>
-      <div className="w-full bg-slate-800">
-        {Object.keys(searchParams).length < 1 ? (
-          <Home />
-        ) : (
-          <div>{response[id].name}</div>
-        )}
-      </div>
+      <ServerNavbar response={response} id={id} />
+      <ServerMain searchParams={searchParams} response={response} id={id} />
     </div>
   );
 };
 
-export default Channel;
+export default Server;

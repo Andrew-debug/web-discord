@@ -22,7 +22,9 @@ export default async function RootLayout({
   const session = await getServerSession();
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(inter.className, "bg-white dark:bg-[#313338]")}>
+      <body
+        className={cn(inter.className, "bg-primary-white dark:bg-dark-400")}
+      >
         <SessionProvider session={session}>
           <ThemeProvider
             attribute="class"
