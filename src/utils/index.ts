@@ -18,3 +18,18 @@ export function formatDate(inputDate: string) {
   const month = months[parseInt(monthStr, 10) - 1];
   return `${parseInt(day, 10)} ${month} ${year}`;
 }
+
+export const channlesObj = [
+  {
+    id: "league-of-legends",
+    name: "League of Legends",
+  },
+  {
+    id: "dota",
+    name: "Dota2",
+  },
+  {
+    id: "cs-go",
+    name: "CS:GO",
+  },
+];

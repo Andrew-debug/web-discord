@@ -9,8 +9,6 @@ const Server = async ({
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
-  const selectedSection = searchParams.section;
-
   // idk why headers needed, works fine without it
   const response = await fetch("http://localhost:3000/api/discordServers", {
     method: "GET",
@@ -19,7 +17,12 @@ const Server = async ({
 
   return (
     <div className="flex w-full">
-      <ServerNavbar response={response} id={id} />
+      <ServerNavbar
+        searchParams={searchParams}
+        server={id}
+        response={response}
+        id={id}
+      />
       <ServerMain searchParams={searchParams} response={response} id={id} />
     </div>
   );
