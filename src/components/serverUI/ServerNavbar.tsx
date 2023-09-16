@@ -21,9 +21,9 @@ const ServerNavbar = ({
   const selectedSection = searchParams.section;
   if (!serverData) return <div>server 404</div>;
   return (
-    <div className="flex flex-col min-w-[300px]">
+    <div className="flex flex-col w-[240px] min-w-[240px]">
       <div className="flex items-center py-3 bg-dark-600 rounded-tl-lg border-b-[1px] border-dark-800">
-        <p className="ml-4">{serverData.name}</p>
+        <p className="ml-4 mr-2 truncate">{serverData.name}</p>
       </div>
       <div className="basis-[90%] bg-dark-600">
         <AccordionComponent>
@@ -31,14 +31,18 @@ const ServerNavbar = ({
             <Link
               key={index}
               href={`?${new URLSearchParams({ section: section })}`}
-              className={`block rounded ${
+              className={`block rounded mx-2 my-[2px] p-2 py-1 ${
                 selectedSection === section && "bg-light-800"
-              } mx-4 p-2 py-1`}
+              } hover:${selectedSection !== section && "bg-dark-400"}`}
             >
               <div className="flex items-center gap-2 text-light-600">
-                <Hash size={18} />
+                <div className="w-[18px] h-[18px]">
+                  <Hash size={18} />
+                </div>
                 <div
-                  className={`${selectedSection === section && "text-white"}`}
+                  className={`truncate ${
+                    selectedSection === section && "text-white"
+                  }`}
                 >
                   {section}
                 </div>

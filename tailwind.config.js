@@ -25,6 +25,7 @@ module.exports = {
         "light-200": "var(--light-200)",
         "light-400": "var(--light-400)",
         "light-600": "var(--light-600)",
+        "light-700": "var(--light-700)",
         "light-800": "var(--light-800)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
