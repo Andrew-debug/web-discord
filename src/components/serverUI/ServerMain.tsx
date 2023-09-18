@@ -245,7 +245,7 @@ const ServerMain = ({ searchParams, response, id }: ServerMain) => {
                   key={date}
                   className="mt-2 border-t-[1px] border-zinc-600/50"
                 >
-                  <span className="relative top-[-14px] left-[500px] bg-dark-400 px-2 text-xs text-zinc-300/70">
+                  <span className="relative -top-3.5 left-[500px] bg-dark-400 px-2 text-xs text-zinc-300/70">
                     {formatDate(date)}
                   </span>
                   {messages.map((messageData, messageDataIndex) => (

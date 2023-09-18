@@ -113,3 +113,21 @@ body,
     background-color: var(--light-400);
   }
 }
+
+.server-side--scale {
+  transform: scale(0);
+  transition: transform linear 0.1s;
+}
+
+.server-icon:hover .server-side--scale {
+  transform: scale(1);
+}
+
+.rounded--server-image {
+  border-radius: 25px;
+  transition: all linear 0.2s;
+}
+
+.server-icon:hover .rounded--server-image {
+  border-radius: 17px;
+}

@@ -15,7 +15,7 @@ const HoverCardComponent = ({
       <HoverCard.Root openDelay={50} closeDelay={50}>
         <HoverCard.Trigger asChild>{Link}</HoverCard.Trigger>
         <HoverCard.Content
-          className="relative bg-primary-black py-2 px-4 rounded-md"
+          className="relative bg-primary-black ml-[18px] py-2 px-4 rounded-md"
           side={side}
         >
           {Card}

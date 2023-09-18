@@ -23,13 +23,16 @@ export const channlesObj = [
   {
     id: "league-of-legends",
     name: "League of Legends",
+    img: "https://cdn.discordapp.com/embed/avatars/0.png",
   },
   {
     id: "dota",
     name: "Dota2",
+    img: "https://cdn.discordapp.com/embed/avatars/1.png",
   },
   {
     id: "cs-go",
     name: "CS:GO",
+    img: "https://cdn.discordapp.com/embed/avatars/2.png",
   },
 ];

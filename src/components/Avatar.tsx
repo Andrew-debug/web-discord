@@ -4,10 +4,12 @@ const Avatar = ({
   width,
   height,
   img = null,
+  active = false,
 }: {
   width: number;
   height: number;
   img?: string | undefined | null;
+  active?: boolean;
 }) => {
   return (
     <div className={`relative w-[${width}px] h-[${height}px]`}>
@@ -15,7 +17,7 @@ const Avatar = ({
         src={img || `https://cdn.discordapp.com/embed/avatars/0.png`}
         width={width}
         height={height}
-        className="rounded-full"
+        className={`${active && "rounded-[17px]"} rounded--server-image`}
         alt="user avatar"
       />
     </div>

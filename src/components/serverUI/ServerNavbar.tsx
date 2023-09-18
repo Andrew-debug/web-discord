@@ -31,7 +31,7 @@ const ServerNavbar = ({
             <Link
               key={index}
               href={`?${new URLSearchParams({ section: section })}`}
-              className={`block rounded mx-2 my-[2px] p-2 py-1 ${
+              className={`block rounded mx-2 my-0.5 p-2 py-1 ${
                 selectedSection === section && "bg-light-800"
               } hover:${selectedSection !== section && "bg-dark-400"}`}
             >
