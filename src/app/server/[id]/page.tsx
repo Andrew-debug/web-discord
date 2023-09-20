@@ -14,7 +14,6 @@ const Server = async ({
     method: "GET",
     headers: headers(),
   }).then((res) => res.json());
-
   return (
     <div className="flex w-full">
       <ServerNavbar
