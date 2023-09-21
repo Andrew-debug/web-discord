@@ -1,5 +1,4 @@
 import { IServer } from "@/types";
-import Home from "./Home";
 import ChatInput from "./ChatInput";
 import { formatDate } from "@/utils";
 import React from "react";
@@ -7,225 +6,19 @@ import ClientChatWrapper from "./ClientChatWrapper";
 import Message from "./Message";
 import ServerChatWelcome from "./ServerChatWelcome";
 import { Hash } from "lucide-react";
-interface ServerMain {
+import { redirect } from "next/navigation";
+import Home from "@/app/page";
+interface IServerMain {
   searchParams: { [key: string]: string | string[] | undefined };
   response: { [key: string]: IServer };
   id: string;
 }
 
-const serverChat = {
-  "2000/11/01": [
-    {
-      name: "user1",
-      avatar: "https://picsum.photos/id/237/200/300",
-      message: "user1message",
-      date: "01/11/2000 05:31",
-    },
-    {
-      name: "user2",
-      avatar: "https://picsum.photos/seed/picsum/200/300",
-      message: "user2message",
-      date: "01/11/2000 05:32",
-    },
-    {
-      name: "user3",
-      avatar: "https://picsum.photos/200/300?grayscale",
-      message: "user3message",
-      date: "01/11/2000 05:33",
-    },
-    {
-      name: "user4",
-      avatar: "https://picsum.photos/200/300/?blur",
-      message: "user4message",
-      date: "01/11/2000 05:34",
-    },
-  ],
-  "2000/11/02": [
-    {
-      name: "user1",
-      avatar: "https://picsum.photos/id/237/200/300",
-      message: "user1message",
-      date: "01/11/2000 05:31",
-    },
-    {
-      name: "user2",
-      avatar: "https://picsum.photos/seed/picsum/200/300",
-      message: "user2message",
-      date: "01/11/2000 05:32",
-    },
-    {
-      name: "user3",
-      avatar: "https://picsum.photos/200/300?grayscale",
-      message: "user3message",
-      date: "01/11/2000 05:33",
-    },
-    {
-      name: "user4",
-      avatar: "https://picsum.photos/200/300/?blur",
-      message: "user4message",
-      date: "01/11/2000 05:34",
-    },
-  ],
-  "2000/11/03": [
-    {
-      name: "user1",
-      avatar: "https://picsum.photos/id/237/200/300",
-      message: "user1message",
-      date: "01/11/2000 05:31",
-    },
-    {
-      name: "user2",
-      avatar: "https://picsum.photos/seed/picsum/200/300",
-      message: "user2message",
-      date: "01/11/2000 05:32",
-    },
-    {
-      name: "user3",
-      avatar: "https://picsum.photos/200/300?grayscale",
-      message: "user3message",
-      date: "01/11/2000 05:33",
-    },
-    {
-      name: "user4",
-      avatar: "https://picsum.photos/200/300/?blur",
-      message: "user4message",
-      date: "01/11/2000 05:34",
-    },
-  ],
-  "2000/11/04": [
-    {
-      name: "user1",
-      avatar: "https://picsum.photos/id/237/200/300",
-      message: "user1message",
-      date: "01/11/2000 05:31",
-    },
-    {
-      name: "user2",
-      avatar: "https://picsum.photos/seed/picsum/200/300",
-      message: "user2message",
-      date: "01/11/2000 05:32",
-    },
-    {
-      name: "user3",
-      avatar: "https://picsum.photos/200/300?grayscale",
-      message: "user3message",
-      date: "01/11/2000 05:33",
-    },
-    {
-      name: "user4",
-      avatar: "https://picsum.photos/200/300/?blur",
-      message: "user4message",
-      date: "01/11/2000 05:34",
-    },
-  ],
-  "2000/11/05": [
-    {
-      name: "user1",
-      avatar: "https://picsum.photos/id/237/200/300",
-      message: "user1message",
-      date: "01/11/2000 05:31",
-    },
-    {
-      name: "user2",
-      avatar: "https://picsum.photos/seed/picsum/200/300",
-      message: "user2message",
-      date: "01/11/2000 05:32",
-    },
-    {
-      name: "user3",
-      avatar: "https://picsum.photos/200/300?grayscale",
-      message: "user3message",
-      date: "01/11/2000 05:33",
-    },
-    {
-      name: "user4",
-      avatar: "https://picsum.photos/200/300/?blur",
-      message: "user4message",
-      date: "01/11/2000 05:34",
-    },
-  ],
-  "2000/11/06": [
-    {
-      name: "user1",
-      avatar: "https://picsum.photos/id/237/200/300",
-      message: "user1message",
-      date: "01/11/2000 05:31",
-    },
-    {
-      name: "user2",
-      avatar: "https://picsum.photos/seed/picsum/200/300",
-      message: "user2message",
-      date: "01/11/2000 05:32",
-    },
-    {
-      name: "user3",
-      avatar: "https://picsum.photos/200/300?grayscale",
-      message: "user3message",
-      date: "01/11/2000 05:33",
-    },
-    {
-      name: "user4",
-      avatar: "https://picsum.photos/200/300/?blur",
-      message: "user4message",
-      date: "01/11/2000 05:34",
-    },
-  ],
-  "2000/11/07": [
-    {
-      name: "user1",
-      avatar: "https://picsum.photos/id/237/200/300",
-      message: "user1message",
-      date: "01/11/2000 05:31",
-    },
-    {
-      name: "user2",
-      avatar: "https://picsum.photos/seed/picsum/200/300",
-      message: "user2message",
-      date: "01/11/2000 05:32",
-    },
-    {
-      name: "user3",
-      avatar: "https://picsum.photos/200/300?grayscale",
-      message: "user3message",
-      date: "01/11/2000 05:33",
-    },
-    {
-      name: "user4",
-      avatar: "https://picsum.photos/200/300/?blur",
-      message: "user4message",
-      date: "01/11/2000 05:34",
-    },
-  ],
-  "2000/11/08": [
-    {
-      name: "user1",
-      avatar: "https://picsum.photos/id/237/200/300",
-      message: "user1message",
-      date: "01/11/2000 05:31",
-    },
-    {
-      name: "user2",
-      avatar: "https://picsum.photos/seed/picsum/200/300",
-      message: "user2message",
-      date: "01/11/2000 05:32",
-    },
-    {
-      name: "user3",
-      avatar: "https://picsum.photos/200/300?grayscale",
-      message: "user3message",
-      date: "01/11/2000 05:33",
-    },
-    {
-      name: "user4",
-      avatar: "https://picsum.photos/200/300/?blur",
-      message: "user4message",
-      date: "01/11/2000 05:34",
-    },
-  ],
-};
-
-const ServerMain = ({ searchParams, response, id }: ServerMain) => {
-  if (Object.keys(searchParams).length < 1) return <Home />;
+const ServerMain = ({ searchParams, response, id }: IServerMain) => {
+  if (id === "user") return <Home />;
+  if (!response[id]) return <>server 404</>;
+  if (Object.keys(searchParams).length < 1 && id !== "user")
+    redirect(`${response[id].id}?section=general`);
 
   return (
     <div className="w-full flex flex-col">
@@ -240,7 +33,9 @@ const ServerMain = ({ searchParams, response, id }: ServerMain) => {
           <ChatInput searchParams={searchParams} />
           <ClientChatWrapper>
             <div className="mb-3 px-4 ">
-              {Object.entries(serverChat).map(([date, messages]) => (
+              {Object.entries(
+                response[id].sections[searchParams.section as string]
+              ).map(([date, messages]) => (
                 <div
                   key={date}
                   className="mt-2 border-t-[1px] border-zinc-600/50"

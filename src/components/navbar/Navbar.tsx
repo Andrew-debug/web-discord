@@ -1,36 +1,15 @@
-"use client";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
 import ServersList from "./ServersList";
 import { ThemeToggle } from "./ThemeToggle";
-import Avatar from "../Avatar";
-
-function AuthButton() {
-  const { data: session } = useSession();
-
-  if (session) {
-    return (
-      <>
-        <Avatar width={48} height={48} img={session?.user?.image} />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    );
-  }
-  return (
-    <>
-      <Avatar width={48} height={48} />
-      <button onClick={() => signIn()}>Sign In</button>
-    </>
-  );
-}
+import AuthButton from "../AuthButton";
 
 const Navbar = () => {
-  const pathname = usePathname();
   return (
-    <nav className="w-[72px] h-screen">
-      <AuthButton />
-      <ServersList pathname={pathname} />
-      <ThemeToggle />
+    <nav className="flex flex-col justify-between min-w-[72px] w-[72px] h-screen bg-dark-800">
+      <ServersList />
+      <div>
+        <ThemeToggle />
+        <AuthButton />
+      </div>
     </nav>
   );
 };

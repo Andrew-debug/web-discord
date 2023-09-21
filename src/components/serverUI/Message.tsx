@@ -1,26 +1,15 @@
+import { IMessageProps } from "@/types";
 import Image from "next/image";
-interface MessageProps {
-  avatar: string;
-  name: string;
-  date: string;
-  message: string;
-}
+import Avatar from "../Avatar";
 
 const Message = ({
   messageData: { avatar, name, date, message },
 }: {
-  messageData: MessageProps;
+  messageData: IMessageProps;
 }) => {
   return (
     <div className="flex items-center mb-4 hover:bg-zinc-800/20">
-      <div className="relative w-[38px] h-[38px] ml-3">
-        <Image
-          fill
-          className="rounded-full object-cover"
-          src={avatar}
-          alt="userImage"
-        />
-      </div>
+      <Avatar width={38} height={38} img={avatar} />
       <div className="ml-4">
         <div className="flex justify-center items-end gap-3">
           <h2 className="font-medium">{name}</h2>

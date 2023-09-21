@@ -1,5 +1,4 @@
 import { IServer } from "@/types";
-import { channlesObj } from "@/utils";
 import Link from "next/link";
 import AccordionComponent from "../ui/AccordionComponent";
 import { Hash, Headphones, Mic, MicOff, Settings } from "lucide-react";
@@ -8,21 +7,15 @@ import Avatar from "../Avatar";
 
 interface IServerNavbar {
   searchParams: { [key: string]: string | string[] | undefined };
-  server: string;
   response: { [key: string]: IServer };
   id: string;
 }
 
-const ServerNavbar = async ({
-  searchParams,
-  server: serverStr,
-  response,
-  id,
-}: IServerNavbar) => {
+const ServerNavbar = async ({ searchParams, response, id }: IServerNavbar) => {
   const session = await getServerSession();
-  const serverData = channlesObj.find((server) => server.id === serverStr);
+  const serverData = response[id];
   const selectedSection = searchParams.section;
-  if (!serverData) return <div>server 404</div>;
+  if (!serverData) return <></>;
   return (
     <div className="flex flex-col w-[240px] min-w-[240px]">
       <div className="flex items-center py-3 bg-dark-600 rounded-tl-lg border-b-[1px] border-dark-800">
@@ -30,7 +23,7 @@ const ServerNavbar = async ({
       </div>
       <div className="basis-[90%] bg-dark-600">
         <AccordionComponent>
-          {response[id].sections.map((section: string, index: number) => (
+          {Object.keys(serverData.sections).map((section, index) => (
             <Link
               key={index}
               href={`?${new URLSearchParams({ section: section })}`}
@@ -56,7 +49,7 @@ const ServerNavbar = async ({
           ))}
         </AccordionComponent>
       </div>
-      <div className="flex gap-1 items-center basis-[5%] text-xs bg-dark-800">
+      <div className="flex gap-1 items-center min-h-[52px] h-[52px] text-xs bg-dark-700">
         <div className="flex gap-1 m-2">
           <div className="relative">
             <Avatar width={32} height={32} img={session?.user?.image} />
@@ -77,13 +70,13 @@ const ServerNavbar = async ({
               <Mic
                 width="100%"
                 height="100%"
-                className="text-light-600 cursor-pointer"
+                className="text-light-600 hover:text-light-200 cursor-pointer"
               />
             ) : (
               <MicOff
                 width="100%"
                 height="100%"
-                className="text-light-600 cursor-pointer"
+                className="text-light-600 hover:text-light-200 cursor-pointer"
               />
             )}
           </div>
@@ -91,14 +84,14 @@ const ServerNavbar = async ({
             <Headphones
               width="100%"
               height="100%"
-              className="text-light-600 cursor-pointer"
+              className="text-light-600 hover:text-light-200 cursor-pointer"
             />
           </div>
           <div className="w-5 h-5">
             <Settings
               width="100%"
               height="100%"
-              className="text-light-600 cursor-pointer"
+              className="text-light-600 hover:text-light-200 cursor-pointer"
             />
           </div>
         </div>

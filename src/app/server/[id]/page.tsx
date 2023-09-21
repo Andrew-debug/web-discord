@@ -16,12 +16,7 @@ const Server = async ({
   }).then((res) => res.json());
   return (
     <div className="flex w-full">
-      <ServerNavbar
-        searchParams={searchParams}
-        server={id}
-        response={response}
-        id={id}
-      />
+      <ServerNavbar searchParams={searchParams} response={response} id={id} />
       <ServerMain searchParams={searchParams} response={response} id={id} />
     </div>
   );
