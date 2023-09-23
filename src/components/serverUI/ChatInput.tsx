@@ -7,7 +7,7 @@ const ChatInput = ({
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
   return (
-    <div className="px-4">
+    <div className="mt-auto px-4">
       <div className="flex justify-center items-center mb-4 bg-zinc-200/90 dark:bg-[#383a40] rounded-lg">
         <PlusCircle
           size={28}

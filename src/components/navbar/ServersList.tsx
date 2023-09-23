@@ -1,7 +1,6 @@
-import Link from "next/link";
-import Avatar from "../Avatar";
 import HoverCardComponent from "../HoverCardComponent";
 import { IServer } from "@/types";
+import NavbarLink from "./NavbarLink";
 
 const ServersList = async () => {
   const response = (await fetch(
@@ -10,47 +9,33 @@ const ServersList = async () => {
 
   return (
     <div>
-      <div className="relative flex justify-center my-2 pt-1 server-icon">
+      <div className="relative flex justify-center my-2 pt-[6px] server-icon">
         <HoverCardComponent
           id="user"
-          Link={
-            <Link href={`/server/user`}>
-              <Avatar width={48} height={48} />
-            </Link>
-          }
-          Card={
-            <>
-              <div className="absolute top-2.5 -left-1.5 w-0 h-0 border-t-8 border-t-transparent border-r-[10px] border-r-primary-black border-b-8 border-b-transparent" />
-              <div className="text-sm">Direct Messages</div>
-            </>
-          }
+          isNavbar
+          link="/server/user"
+          cardMessage="Direct Messages"
         />
       </div>
-      <div className="w-8 h-[2px] bg-dark-400 rounded-[1px] mx-auto my-1"></div>
+      <div className="w-8 h-[2px] bg-dark-400 rounded-[1px] mx-auto my-[2px]"></div>
       {Object.values(response).map((item, index) => (
-        <div
-          className="relative flex justify-center mb-1 server-icon"
+        <NavbarLink
+          type="channel"
           key={index}
-        >
-          <HoverCardComponent
-            id={item.id}
-            Link={
-              <Link
-                href={`/server/${item.id}?section=general`}
-                className="mt-1.5"
-              >
-                <Avatar width={48} height={48} img={item.defaultImg} />
-              </Link>
-            }
-            Card={
-              <>
-                <div className="absolute top-2.5 -left-1.5 w-0 h-0 border-t-8 border-t-transparent border-r-[10px] border-r-primary-black border-b-8 border-b-transparent" />
-                <div className="text-sm">{item.name}</div>
-              </>
-            }
-          />
-        </div>
+          id={item.id}
+          link={`/server/${item.id}?section=general`}
+          img={item.defaultImg}
+          cardMessage={item.name}
+        />
       ))}
+      <NavbarLink
+        type="action"
+        bgColor="#000"
+        cardMessage="lol"
+        id="create"
+        link="/"
+        svg="link"
+      />
     </div>
   );
 };

@@ -17,7 +17,7 @@ const Avatar = ({
         src={img || `https://cdn.discordapp.com/embed/avatars/0.png`}
         width={width}
         height={height}
-        className={`${active && "rounded-[17px]"} rounded--server-image`}
+        className={`${active ? "rounded-[17px]" : "rounded--server-image"}`}
         alt="user avatar"
       />
     </div>

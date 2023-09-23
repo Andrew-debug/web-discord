@@ -21,16 +21,15 @@ const ServerMain = ({ searchParams, response, id }: IServerMain) => {
     redirect(`${response[id].id}?section=general`);
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full h-[100vh] flex flex-col">
       <header className="py-3 border-b-[1px] border-dark-800">
         <h1 className="flex items-center ml-4">
           <Hash size={20} className="text-light-600 mr-2" />
           <p>{searchParams.section}</p>
         </h1>
       </header>
-      <main className="relative basis-[95%]">
+      <main className="relative h-[calc(100vh-113px)]">
         <div className="w-full h-full flex flex-col-reverse">
-          <ChatInput searchParams={searchParams} />
           <ClientChatWrapper>
             <div className="mb-3 px-4 ">
               {Object.entries(
@@ -53,6 +52,7 @@ const ServerMain = ({ searchParams, response, id }: IServerMain) => {
           </ClientChatWrapper>
         </div>
       </main>
+      <ChatInput searchParams={searchParams} />
     </div>
   );
 };

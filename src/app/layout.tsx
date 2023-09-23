@@ -32,10 +32,10 @@ export default async function RootLayout({
             enableSystem={false}
             storageKey="discord-theme"
           >
-            <main className="flex">
+            <div className="flex">
               <Navbar />
-              {children}
-            </main>
+              <main className="w-full">{children}</main>
+            </div>
           </ThemeProvider>
         </SessionProvider>
       </body>

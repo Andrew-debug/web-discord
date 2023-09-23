@@ -1,16 +1,11 @@
-import { getServerSession } from "next-auth";
-
 export default async function Home() {
-  const session = await getServerSession();
+  const response = await fetch("http://localhost:3000/api/userData").then(
+    (res) => res.json()
+  );
   return (
-    <>
-      THIS IS HOME DISCORD PAGE WITH EXPLAINING HOW TO USE THE APP BELOW TELLS
-      YOU IF U'R LOGGED IN...
-      {session?.user?.name ? (
-        <div>{session?.user?.name}</div>
-      ) : (
-        <div>Not logged in</div>
-      )}
-    </>
+    <div className="flex w-full">
+      <div className="flex flex-col w-[240px] min-w-[240px] bg-primary-white dark:bg-dark-600"></div>
+      <div>user main</div>
+    </div>
   );
 }
