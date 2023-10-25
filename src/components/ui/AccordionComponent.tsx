@@ -7,7 +7,7 @@ const AccordionComponent = ({ children }: { children: React.ReactNode }) => {
   const [accState, setAccState] = useState<"open" | "closed">("open");
   return (
     <Accordion.Root
-      className="mt-4 bg-dark-600"
+      className="mt-4 bg-dark-500"
       type="single"
       defaultValue="open"
       collapsible

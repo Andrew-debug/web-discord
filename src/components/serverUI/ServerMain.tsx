@@ -2,7 +2,6 @@ import { IServer } from "@/types";
 import ChatInput from "./ChatInput";
 import { formatDate } from "@/utils";
 import React from "react";
-import ClientChatWrapper from "./ClientChatWrapper";
 import Message from "./Message";
 import ServerChatWelcome from "./ServerChatWelcome";
 import { Hash } from "lucide-react";
@@ -22,7 +21,7 @@ const ServerMain = ({ searchParams, response, id }: IServerMain) => {
 
   return (
     <div className="w-full h-[100vh] flex flex-col">
-      <header className="py-3 border-b-[1px] border-dark-800">
+      <header className="py-3 border-b-[1px] border-dark-700">
         <h1 className="flex items-center ml-4">
           <Hash size={20} className="text-light-600 mr-2" />
           <p>{searchParams.section}</p>
@@ -30,7 +29,9 @@ const ServerMain = ({ searchParams, response, id }: IServerMain) => {
       </header>
       <main className="relative h-[calc(100vh-113px)]">
         <div className="w-full h-full flex flex-col-reverse">
-          <ClientChatWrapper>
+          <div
+            className={`flex flex-col-reverse overflow-y-auto overflow-x-hidden light-scrollbar-track light-scrollbar-thumb dark:dark-scrollbar-track dark:dark-scrollbar-thumb`}
+          >
             <div className="mb-3 px-4 ">
               {Object.entries(
                 response[id].sections[searchParams.section as string]
@@ -49,7 +50,7 @@ const ServerMain = ({ searchParams, response, id }: IServerMain) => {
               ))}
             </div>
             <ServerChatWelcome searchParams={searchParams} />
-          </ClientChatWrapper>
+          </div>
         </div>
       </main>
       <ChatInput searchParams={searchParams} />

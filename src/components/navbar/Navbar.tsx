@@ -4,7 +4,7 @@ import AuthButton from "../AuthButton";
 
 const Navbar = () => {
   return (
-    <nav className="flex flex-col justify-between min-w-[72px] w-[72px] h-screen bg-dark-800">
+    <nav className="flex flex-col justify-between min-w-[72px] w-[72px] h-screen bg-dark-700">
       <ServersList />
       <div>
         <ThemeToggle />

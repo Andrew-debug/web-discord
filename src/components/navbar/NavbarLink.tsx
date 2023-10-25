@@ -20,6 +20,7 @@ type ActionLink = {
   bgColor: string;
 };
 
+// TODO: fix this
 type INavbarLink = {
   link: string;
   cardMessage: string;
