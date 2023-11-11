@@ -1,6 +1,6 @@
-import HoverCardComponent from "../HoverCardComponent";
-import { IServer } from "@/types";
 import NavbarLink from "./NavbarLink";
+import { IServer } from "@/types";
+import { Plus } from "lucide-react";
 
 const ServersList = async () => {
   const response = (await fetch(
@@ -9,10 +9,10 @@ const ServersList = async () => {
 
   return (
     <div>
-      <div className="relative flex justify-center my-2 pt-[6px] server-icon">
-        <HoverCardComponent
+      <div className="my-2 server-icon">
+        <NavbarLink
+          type="serverLink"
           id="user"
-          isNavbar
           link="/server/user"
           cardMessage="Direct Messages"
         />
@@ -20,7 +20,7 @@ const ServersList = async () => {
       <div className="w-8 h-[2px] bg-dark-400 rounded-[1px] mx-auto my-[2px]"></div>
       {Object.values(response).map((item, index) => (
         <NavbarLink
-          type="channel"
+          type="serverLink"
           key={index}
           id={item.id}
           link={`/server/${item.id}?section=general`}
@@ -29,12 +29,11 @@ const ServersList = async () => {
         />
       ))}
       <NavbarLink
-        type="action"
-        bgColor="#000"
+        type="actionLink"
         cardMessage="lol"
         id="create"
         link="/"
-        svg="link"
+        icon={<Plus />}
       />
     </div>
   );

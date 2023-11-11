@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverActions: true,
-  },
   images: {
     remotePatterns: [
       {
@@ -14,7 +11,6 @@ const nextConfig = {
         hostname: "cdn.discordapp.com",
       },
     ],
-    domains: ["picsum.photos"],
   },
 };
 
