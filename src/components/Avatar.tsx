@@ -1,17 +1,15 @@
 import Image from "next/image";
 import _ from "lodash";
-import { ReactElement } from "react";
+
 const Avatar = ({
   width,
   height,
   img = null,
-  svg,
   active = false,
 }: {
   width: number;
   height: number;
   img?: string | undefined | null;
-  svg?: ReactElement;
   active?: boolean;
 }) => {
   return (

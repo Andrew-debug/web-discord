@@ -21,7 +21,7 @@ body,
     --light-600: #a6a6aa;
     --light-700: #717171;
     --light-800: #404248;
-
+    --green: #23a559;
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
 
@@ -142,6 +142,15 @@ body,
 
 .server-icon:hover .server-side--scale {
   transform: scale(1);
+}
+.nav-action-link {
+  color: var(--green);
+}
+.server-icon:hover .nav-action-link {
+  color: var(--light-200);
+}
+.server-icon:hover .nav-action-link--bg {
+  background-color: var(--green);
 }
 
 .rounded--server-image {

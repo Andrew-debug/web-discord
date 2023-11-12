@@ -1,6 +1,5 @@
 import NavbarLink from "./NavbarLink";
 import { IServer } from "@/types";
-import { Plus } from "lucide-react";
 
 const ServersList = async () => {
   const response = (await fetch(
@@ -30,10 +29,25 @@ const ServersList = async () => {
       ))}
       <NavbarLink
         type="actionLink"
-        cardMessage="lol"
-        id="create"
+        cardMessage="Add a server"
+        id="createServer"
         link="/"
-        icon={<Plus />}
+        icon="addServer"
+      />
+      <NavbarLink
+        type="actionLink"
+        cardMessage="Explore Discoverable Servers"
+        id="exploreServers"
+        link="/"
+        icon="exploreServers"
+      />
+      <div className="w-8 h-[2px] bg-dark-400 rounded-[1px] mx-auto mt-2"></div>
+      <NavbarLink
+        type="actionLink"
+        cardMessage="Download Apps"
+        id="downloableApps"
+        link="/"
+        icon="downloadApps"
       />
     </div>
   );

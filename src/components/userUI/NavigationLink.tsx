@@ -11,8 +11,9 @@ type NavigationLinkProps =
 
 const NavigationLink = (props: NavigationLinkProps) => {
   const pathname = usePathname();
+  const { href, text } = props;
   if (props.type === "section") {
-    const { href, text, icon } = props;
+    const { icon } = props;
     return (
       <div className="text-sm">
         <Link
@@ -29,7 +30,7 @@ const NavigationLink = (props: NavigationLinkProps) => {
   }
   if (props.type === "friend") {
     const [isHovered, setIsHovered] = useState(false);
-    const { href, text, img } = props;
+    const { img } = props;
     return (
       <li
         onMouseEnter={() => setIsHovered(true)}

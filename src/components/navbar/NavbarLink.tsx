@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import HoverCardComponent from "../HoverCardComponent";
 
 type NavbarLinkProps =
@@ -7,7 +6,7 @@ type NavbarLinkProps =
       id: string;
       link: string;
       cardMessage: string;
-      icon: ReactNode;
+      icon: string;
     }
   | {
       type: "serverLink";
@@ -18,8 +17,9 @@ type NavbarLinkProps =
     };
 
 const NavbarLink = (props: NavbarLinkProps) => {
+  const { cardMessage, id, link } = props;
   if (props.type === "serverLink") {
-    const { cardMessage, id, link, img } = props;
+    const { img } = props;
     return (
       <div className="relative flex justify-center mb-1 pt-[6px] server-icon">
         <HoverCardComponent
@@ -32,7 +32,7 @@ const NavbarLink = (props: NavbarLinkProps) => {
     );
   }
   if (props.type === "actionLink") {
-    const { cardMessage, id, link, icon } = props;
+    const { icon } = props;
     return (
       <div className="relative flex justify-center mb-1 pt-[6px] server-icon">
         <HoverCardComponent
