@@ -15,7 +15,7 @@ const Server = async ({
     headers: headers(),
   }).then((res) => res.json());
   return (
-    <div className="flex w-full">
+    <div className="flex w-full overflow-hidden">
       <ServerNavbar searchParams={searchParams} response={response} id={id} />
       <ServerMain searchParams={searchParams} response={response} id={id} />
     </div>

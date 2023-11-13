@@ -11,10 +11,11 @@ interface IActionLinkIcons {
   downloadApps: ReactNode;
 }
 const actionLinkIcons: IActionLinkIcons = {
-  addServer: <Plus className="nav-action-link" />,
-  exploreServers: <Compass className="nav-action-link" />,
-  downloadApps: <Download className="nav-action-link" />,
+  addServer: <Plus className="nav-action-link--icon" />,
+  exploreServers: <Compass className="nav-action-link--icon" />,
+  downloadApps: <Download className="nav-action-link--icon" />,
 };
+
 interface HoverCardComponentProps {
   link: string;
   cardMessage: string;

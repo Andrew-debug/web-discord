@@ -34,7 +34,7 @@ export default async function RootLayout({
           >
             <div className="flex">
               <Navbar />
-              <main className="w-full">{children}</main>
+              <main className="w-full overflow-hidden">{children}</main>
             </div>
           </ThemeProvider>
         </SessionProvider>

@@ -15,7 +15,7 @@ const ServerNavbar = async ({ searchParams, response, id }: IServerNavbar) => {
   const selectedSection = searchParams.section;
   if (!serverData) return <></>;
   return (
-    <div className="flex flex-col w-[240px] min-w-[240px] h-[100vh]">
+    <section className="flex flex-col w-[240px] min-w-[240px] h-[100vh]">
       <div className="flex items-center py-3 bg-dark-500 rounded-tl-lg border-b-[1px] border-dark-700">
         <p className="ml-4 mr-2 truncate">{serverData.name}</p>
       </div>
@@ -48,7 +48,7 @@ const ServerNavbar = async ({ searchParams, response, id }: IServerNavbar) => {
         </AccordionComponent>
       </div>
       <ActionPanel />
-    </div>
+    </section>
   );
 };
 

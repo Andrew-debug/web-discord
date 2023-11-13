@@ -7,6 +7,8 @@ import ServerChatWelcome from "./ServerChatWelcome";
 import { Hash } from "lucide-react";
 import { redirect } from "next/navigation";
 import Home from "@/app/page";
+import UserNavbar from "../userUI/UserNavbar";
+import UserMain from "../userUI/UserMain";
 interface IServerMain {
   searchParams: { [key: string]: string | string[] | undefined };
   response: { [key: string]: IServer };
@@ -14,13 +16,19 @@ interface IServerMain {
 }
 
 const ServerMain = ({ searchParams, response, id }: IServerMain) => {
-  if (id === "user") return <Home />;
+  if (id === "user")
+    return (
+      <>
+        <UserNavbar />
+        <UserMain />
+      </>
+    );
   if (!response[id]) return <>server 404</>;
   if (Object.keys(searchParams).length < 1 && id !== "user")
     redirect(`${response[id].id}?section=general`);
 
   return (
-    <div className="w-full h-[100vh] flex flex-col">
+    <section className="w-full h-[100vh] flex flex-col">
       <header className="py-3 border-b-[1px] border-dark-700">
         <h1 className="flex items-center ml-4">
           <Hash size={20} className="text-light-600 mr-2" />
@@ -54,7 +62,7 @@ const ServerMain = ({ searchParams, response, id }: IServerMain) => {
         </div>
       </main>
       <ChatInput searchParams={searchParams} />
-    </div>
+    </section>
   );
 };
 

@@ -50,7 +50,7 @@ const NavigationLink = (props: NavigationLinkProps) => {
                   pathname === href ? "bg-light-800" : "bg-dark-500"
                 } hover:bg-dark-400 rounded-full`}
               >
-                <div className="w-[11px] h-[11px] bg-green-600 rounded-full"></div>
+                <div className="w-[11px] h-[11px] bg-primary-green rounded-full"></div>
               </div>
             </div>
             <span className="truncate max-w-[120px]">{text}</span>
