@@ -1,3 +1,4 @@
+import DialogDemo from "../ui/DialogDemo";
 import NavbarLink from "./NavbarLink";
 import { IServer } from "@/types";
 
@@ -27,13 +28,15 @@ const ServersList = async () => {
           cardMessage={item.name}
         />
       ))}
-      <NavbarLink
-        type="actionLink"
-        cardMessage="Add a server"
-        id="createServer"
-        link="/"
-        icon="addServer"
-      />
+      <DialogDemo>
+        <NavbarLink
+          type="actionLink"
+          cardMessage="Add a server"
+          id="createServer"
+          link=""
+          icon="addServer"
+        />
+      </DialogDemo>
       <NavbarLink
         type="actionLink"
         cardMessage="Explore Discoverable Servers"

@@ -1,4 +1,4 @@
-import HoverCardComponent from "../HoverCardComponent";
+import HoverCardComponent from "../hoverCard/HoverCardComponent";
 
 type NavbarLinkProps =
   | {

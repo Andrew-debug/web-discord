@@ -6,7 +6,6 @@ import Message from "./Message";
 import ServerChatWelcome from "./ServerChatWelcome";
 import { Hash } from "lucide-react";
 import { redirect } from "next/navigation";
-import Home from "@/app/page";
 import UserNavbar from "../userUI/UserNavbar";
 import UserMain from "../userUI/UserMain";
 interface IServerMain {

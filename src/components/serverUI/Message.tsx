@@ -1,5 +1,4 @@
 import { IMessageProps } from "@/types";
-import Image from "next/image";
 import Avatar from "../Avatar";
 
 const Message = ({
