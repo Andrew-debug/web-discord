@@ -1,29 +1,29 @@
 import DialogDemo from "../ui/DialogDemo";
 import NavbarLink from "./NavbarLink";
-import { IServer } from "@/types";
+import { IChannel } from "@/types";
 
-const ServersList = async () => {
+const ChannelsList = async () => {
   const response = (await fetch(
     "http://localhost:3000/api/discordServers"
-  ).then((res) => res.json())) as IServer[];
+  ).then((res) => res.json())) as IChannel[];
 
   return (
     <div>
-      <div className="my-2 server-icon">
+      <div className="my-2 channel-icon">
         <NavbarLink
-          type="serverLink"
-          id="user"
-          link="/server/user"
+          type="channelLink"
+          id="me"
+          link="/channels/me"
           cardMessage="Direct Messages"
         />
       </div>
       <div className="w-8 h-[2px] bg-dark-400 rounded-[1px] mx-auto my-[2px]"></div>
       {Object.values(response).map((item, index) => (
         <NavbarLink
-          type="serverLink"
+          type="channelLink"
           key={index}
           id={item.id}
-          link={`/server/${item.id}?section=general`}
+          link={`/channels/${item.id}?section=general`}
           img={item.defaultImg}
           cardMessage={item.name}
         />
@@ -31,18 +31,18 @@ const ServersList = async () => {
       <DialogDemo>
         <NavbarLink
           type="actionLink"
-          cardMessage="Add a server"
-          id="createServer"
+          cardMessage="Add a Server"
+          id="createChannel"
           link=""
-          icon="addServer"
+          icon="addChannel"
         />
       </DialogDemo>
       <NavbarLink
         type="actionLink"
         cardMessage="Explore Discoverable Servers"
-        id="exploreServers"
+        id="exploreChannels"
         link="/"
-        icon="exploreServers"
+        icon="exploreChannels"
       />
       <div className="w-8 h-[2px] bg-dark-400 rounded-[1px] mx-auto mt-2"></div>
       <NavbarLink
@@ -56,4 +56,4 @@ const ServersList = async () => {
   );
 };
 
-export default ServersList;
+export default ChannelsList;

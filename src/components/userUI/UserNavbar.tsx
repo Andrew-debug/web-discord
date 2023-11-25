@@ -12,7 +12,7 @@ const UserNavbar = async () => {
       <main className="h-full scrollbar-gutter-stable thin-scrollbar transparent-track-scrollbar overflow-hidden hover:overflow-y-scroll light-scrollbar-thumb dark:darker-scrollbar-thumb">
         <NavigationLink
           type="section"
-          href="/server/user"
+          href="/channels/me"
           text="Friends"
           icon={<Accessibility />}
         />

@@ -1,6 +1,6 @@
 import { Hash } from "lucide-react";
 
-const ServerChatWelcome = ({
+const ChatWelcome = ({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -18,4 +18,4 @@ const ServerChatWelcome = ({
   );
 };
 
-export default ServerChatWelcome;
+export default ChatWelcome;

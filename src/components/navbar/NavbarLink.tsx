@@ -9,7 +9,7 @@ type NavbarLinkProps =
       icon: string;
     }
   | {
-      type: "serverLink";
+      type: "channelLink";
       id: string;
       link: string;
       cardMessage: string;
@@ -18,10 +18,10 @@ type NavbarLinkProps =
 
 const NavbarLink = (props: NavbarLinkProps) => {
   const { cardMessage, id, link } = props;
-  if (props.type === "serverLink") {
+  if (props.type === "channelLink") {
     const { img } = props;
     return (
-      <div className="relative flex justify-center mb-1 pt-[6px] server-icon">
+      <div className="relative flex justify-center mb-1 pt-[6px] channel-icon">
         <HoverCardComponent
           cardMessage={cardMessage}
           id={id}
@@ -34,7 +34,7 @@ const NavbarLink = (props: NavbarLinkProps) => {
   if (props.type === "actionLink") {
     const { icon } = props;
     return (
-      <div className="relative flex justify-center mb-1 pt-[6px] server-icon">
+      <div className="relative flex justify-center mb-1 pt-[6px] channel-icon">
         <HoverCardComponent
           cardMessage={cardMessage}
           id={id}

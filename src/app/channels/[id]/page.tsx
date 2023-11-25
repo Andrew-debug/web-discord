@@ -1,8 +1,8 @@
 import { headers } from "next/headers";
-import ServerMain from "@/components/serverUI/ServerMain";
-import ServerNavbar from "@/components/serverUI/ServerNavbar";
+import ChannelMain from "@/components/channelUI/ChannelMain";
+import ChannelNavbar from "@/components/channelUI/ChannelNavbar";
 
-const Server = async ({
+const page = async ({
   params: { id },
   searchParams,
 }: {
@@ -16,10 +16,10 @@ const Server = async ({
   }).then((res) => res.json());
   return (
     <div className="flex w-full overflow-hidden">
-      <ServerNavbar searchParams={searchParams} response={response} id={id} />
-      <ServerMain searchParams={searchParams} response={response} id={id} />
+      <ChannelNavbar searchParams={searchParams} response={response} id={id} />
+      <ChannelMain searchParams={searchParams} response={response} id={id} />
     </div>
   );
 };
 
-export default Server;
+export default page;

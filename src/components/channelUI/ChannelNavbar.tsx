@@ -1,27 +1,31 @@
-import { IServer } from "@/types";
+import { IChannel } from "@/types";
 import Link from "next/link";
 import AccordionComponent from "../ui/AccordionComponent";
 import { Hash } from "lucide-react";
 import ActionPanel from "../ActionPanel";
 
-interface IServerNavbar {
+interface IChannelNavbar {
   searchParams: { [key: string]: string | string[] | undefined };
-  response: { [key: string]: IServer };
+  response: { [key: string]: IChannel };
   id: string;
 }
 
-const ServerNavbar = async ({ searchParams, response, id }: IServerNavbar) => {
-  const serverData = response[id];
+const ChannelNavbar = async ({
+  searchParams,
+  response,
+  id,
+}: IChannelNavbar) => {
+  const channelData = response[id];
   const selectedSection = searchParams.section;
-  if (!serverData) return <></>;
+  if (!channelData) return <></>;
   return (
     <section className="flex flex-col w-[240px] min-w-[240px] h-[100vh]">
       <div className="flex items-center py-3 bg-dark-500 rounded-tl-lg border-b-[1px] border-dark-700">
-        <p className="ml-4 mr-2 truncate">{serverData.name}</p>
+        <p className="ml-4 mr-2 truncate">{channelData.name}</p>
       </div>
       <div className="h-full bg-dark-500">
         <AccordionComponent>
-          {Object.keys(serverData.sections).map((section, index) => (
+          {Object.keys(channelData.sections).map((section, index) => (
             <Link
               key={index}
               href={`?${new URLSearchParams({ section: section })}`}
@@ -52,4 +56,4 @@ const ServerNavbar = async ({ searchParams, response, id }: IServerNavbar) => {
   );
 };
 
-export default ServerNavbar;
+export default ChannelNavbar;

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import * as Realm from "realm-web";
-import HoverCardComponentParentImage from "./HoverCardComponentParentImage";
+import HoverCardTriggerImage from "./HoverCardTriggerImage";
 
 interface HoverCardComponentProps {
   link: string;
@@ -94,7 +94,7 @@ const HoverCardComponent = ({
         <HoverCard.Trigger asChild>
           {link ? (
             <Link href={link}>
-              <HoverCardComponentParentImage
+              <HoverCardTriggerImage
                 icon={icon}
                 id={id}
                 img={img}
@@ -103,7 +103,7 @@ const HoverCardComponent = ({
             </Link>
           ) : (
             <div className="cursor-pointer">
-              <HoverCardComponentParentImage
+              <HoverCardTriggerImage
                 icon={icon}
                 id={id}
                 img={img}
@@ -121,13 +121,13 @@ const HoverCardComponent = ({
         </HoverCard.Content>
       </HoverCard.Root>
       <>
-        {pathname === `/server/${id}` ? (
+        {pathname === `/channels/${id}` ? (
           <div
             className={`absolute top-2.5 left-0 h-10 w-1 bg-primary-white rounded-e opacity-1 `}
           />
         ) : (
           <div
-            className={`absolute top-5 left-0 h-5 w-1 bg-primary-white rounded-e server-side--scale`}
+            className={`absolute top-5 left-0 h-5 w-1 bg-primary-white rounded-e channel-side--scale`}
           />
         )}
       </>

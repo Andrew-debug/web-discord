@@ -1,29 +1,20 @@
-import { IServer } from "@/types";
+import { IChannel } from "@/types";
 import ChatInput from "./ChatInput";
 import { formatDate } from "@/utils";
 import React from "react";
 import Message from "./Message";
-import ServerChatWelcome from "./ServerChatWelcome";
+import ChatWelcome from "./ChatWelcome";
 import { Hash } from "lucide-react";
 import { redirect } from "next/navigation";
-import UserNavbar from "../userUI/UserNavbar";
-import UserMain from "../userUI/UserMain";
-interface IServerMain {
+interface IChannelMain {
   searchParams: { [key: string]: string | string[] | undefined };
-  response: { [key: string]: IServer };
+  response: { [key: string]: IChannel };
   id: string;
 }
 
-const ServerMain = ({ searchParams, response, id }: IServerMain) => {
-  if (id === "user")
-    return (
-      <>
-        <UserNavbar />
-        <UserMain />
-      </>
-    );
+const ChannelMain = ({ searchParams, response, id }: IChannelMain) => {
   if (!response[id]) return <>server 404</>;
-  if (Object.keys(searchParams).length < 1 && id !== "user")
+  if (Object.keys(searchParams).length < 1)
     redirect(`${response[id].id}?section=general`);
 
   return (
@@ -56,7 +47,7 @@ const ServerMain = ({ searchParams, response, id }: IServerMain) => {
                 </div>
               ))}
             </div>
-            <ServerChatWelcome searchParams={searchParams} />
+            <ChatWelcome searchParams={searchParams} />
           </div>
         </div>
       </main>
@@ -65,4 +56,4 @@ const ServerMain = ({ searchParams, response, id }: IServerMain) => {
   );
 };
 
-export default ServerMain;
+export default ChannelMain;

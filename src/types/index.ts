@@ -1,4 +1,4 @@
-export interface IServer {
+export interface IChannel {
   id: string;
   name: string;
   sections: { [key: string]: { [key: string]: IMessageProps[] } };

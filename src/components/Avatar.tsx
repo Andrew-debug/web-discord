@@ -15,10 +15,11 @@ const Avatar = ({
   return (
     <div className={`relative w-[${width}px] h-[${height}px]`}>
       <Image
+        priority
         src={img || `https://cdn.discordapp.com/embed/avatars/0.png`}
         width={width}
         height={height}
-        className={`${active ? "rounded-[17px]" : "rounded--server-image"}`}
+        className={`${active ? "rounded-[17px]" : "rounded--channel-image"}`}
         alt="user avatar"
       />
     </div>

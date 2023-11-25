@@ -7,14 +7,14 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 
 interface IForm {
-  serverName: string;
+  channelName: string;
   image: string;
 }
 
-const ServerForm = () => {
+const ChannelForm = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [form, setForm] = useState<IForm>({
-    serverName: "",
+    channelName: "",
     image: "",
   });
 
@@ -84,7 +84,7 @@ const ServerForm = () => {
                 width={80}
                 height={80}
                 className="rounded-full"
-                alt="server image"
+                alt="channel image"
               />
             ) : (
               <Image
@@ -96,7 +96,7 @@ const ServerForm = () => {
             )}
           </div>
           <input
-            id="server avatar"
+            // id="channel avatar"
             type="file"
             accept="image/*"
             // required={type === "create" ? true : false}
@@ -109,19 +109,19 @@ const ServerForm = () => {
       <fieldset className="mb-4">
         <label
           className="block mb-2 text-[11px] text-dark-300 uppercase font-bold"
-          htmlFor="serverName"
+          htmlFor="channelName"
         >
           server name
         </label>
         <input
           // type={type || "text"}
           type="text"
-          id="serverName"
+          id="channelName"
           placeholder="Server name"
-          value={form.serverName}
+          value={form.channelName}
           required
           className="w-full h-9 flex-1 inline-flex items-center justify-center rounded-sm px-[10px] text-sm bg-light-300 text-black placeholder:text-black focus:outline-none"
-          onChange={(e) => handleStateChange("serverName", e.target.value)}
+          onChange={(e) => handleStateChange("channelName", e.target.value)}
         />
       </fieldset>
 
@@ -161,4 +161,4 @@ const ServerForm = () => {
   );
 };
 
-export default ServerForm;
+export default ChannelForm;

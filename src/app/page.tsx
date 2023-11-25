@@ -1,7 +1,7 @@
 import UserNavbar from "@/components/userUI/UserNavbar";
 import Link from "next/link";
 
-export default async function Home() {
+export default function Home() {
   return (
     <div className="flex w-full overflow-hidden">
       <UserNavbar />

@@ -2,7 +2,7 @@
 import React, { ReactNode } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import "../../styles/dialogDemoStyles.css";
-import ServerForm from "../createServer/ServerForm";
+import ChannelForm from "../createChannel/ChannelForm";
 
 const DialogDemo = ({ children }: { children: ReactNode }) => (
   <Dialog.Root>
@@ -17,7 +17,7 @@ const DialogDemo = ({ children }: { children: ReactNode }) => (
           Give your new server a personality with a name and an icon. You can
           always change it later.
         </Dialog.Description>
-        <ServerForm />
+        <ChannelForm />
       </Dialog.Content>
     </Dialog.Portal>
   </Dialog.Root>

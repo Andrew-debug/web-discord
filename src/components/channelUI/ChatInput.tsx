@@ -14,6 +14,7 @@ const ChatInput = ({
           className="ml-3 stroke-[#383a40] dark:fill-[#b5bac0] hover:fill-zinc-300 hover:dark:fill-zinc-200 "
         />
         <Input
+          name="chatInput"
           type="text"
           className="pl-3 py-6 bg-zinc-200/90 dark:bg-[#383a40] border-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0 text-zinc-600 dark:text-light-200 placeholder:text-light-700"
           placeholder={`Message #${searchParams.section}`}

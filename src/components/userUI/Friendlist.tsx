@@ -15,7 +15,7 @@ const Friendlist = () => {
               key={index}
               type="friend"
               img={"https://cdn.discordapp.com/embed/avatars/0.png"}
-              href={`/${index}`}
+              href={`/channels/me/${index}`}
               text="friend"
             />
           ))}

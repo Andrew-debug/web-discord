@@ -3,37 +3,37 @@ import { ReactNode } from "react";
 import Avatar from "../Avatar";
 
 interface IActionLinkIcons {
-  addServer: ReactNode;
-  exploreServers: ReactNode;
+  addChannel: ReactNode;
+  exploreChannels: ReactNode;
   downloadApps: ReactNode;
 }
 
 const actionLinkIcons: IActionLinkIcons = {
-  addServer: <Plus className="nav-action-link--icon" />,
-  exploreServers: <Compass className="nav-action-link--icon" />,
+  addChannel: <Plus className="nav-action-link--icon" />,
+  exploreChannels: <Compass className="nav-action-link--icon" />,
   downloadApps: <Download className="nav-action-link--icon" />,
 };
 
-interface HoverCardComponentParentImageProps {
+interface HoverCardTriggerImageProps {
   icon?: string;
   pathname: string;
   id: string;
   img?: string;
 }
-const HoverCardComponentParentImage = ({
+const HoverCardTriggerImage = ({
   icon,
   pathname,
   id,
   img,
-}: HoverCardComponentParentImageProps) => {
+}: HoverCardTriggerImageProps) => {
   return (
     <>
       {icon ? (
         <div
           className={`flex justify-center items-center bg-dark-400 w-12 h-12 nav-action-link--bg ${
-            pathname === `/server/${id}`
+            pathname === `/channels/${id}`
               ? "rounded-[17px]"
-              : "rounded--server-image"
+              : "rounded--channel-image"
           }`}
         >
           {actionLinkIcons[icon as keyof IActionLinkIcons]}
@@ -43,11 +43,11 @@ const HoverCardComponentParentImage = ({
           width={48}
           height={48}
           img={img}
-          active={pathname === `/server/${id}`}
+          active={pathname === `/channels/${id}`}
         />
       )}
     </>
   );
 };
 
-export default HoverCardComponentParentImage;
+export default HoverCardTriggerImage;
