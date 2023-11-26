@@ -5,13 +5,18 @@ import LoadImageSvg from "../../../public/load-image.svg";
 import Link from "next/link";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
+import * as Realm from "realm-web";
 
 interface IForm {
   channelName: string;
   image: string;
 }
 
-const ChannelForm = () => {
+const ChannelForm = ({
+  setOpenModal,
+}: {
+  setOpenModal: (v: boolean) => void;
+}) => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [form, setForm] = useState<IForm>({
     channelName: "",
@@ -48,7 +53,6 @@ const ChannelForm = () => {
 
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
     // setIsSubmitting(true);
 
     // const { token } = await fetchToken();
@@ -73,8 +77,24 @@ const ChannelForm = () => {
     //   setIsSubmitting(false);
     // }
   };
+
+  const handleCreateChannel = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setOpenModal(false);
+
+    const realm_app = process.env.NEXT_PUBLIC_REALM_APP_ID ?? "";
+    const app = new Realm.App({ id: realm_app });
+    const credentials = Realm.Credentials.anonymous();
+    try {
+      const user = await app.logIn(credentials);
+      const allData = await user.functions.getAllServers();
+      console.log(allData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
-    <form onSubmit={handleFormSubmit} className="">
+    <form onSubmit={handleCreateChannel}>
       <fieldset className="flex justify-center mb-6">
         <div className={`relative w-[${form?.image ? "80px" : "60px"}]`}>
           <div className="flex justify-center">
@@ -136,27 +156,15 @@ const ChannelForm = () => {
           </Link>
         </strong>
       </div>
-      <div
-        style={{ display: "flex", marginTop: 25, justifyContent: "flex-end" }}
-      >
-        <Dialog.Close asChild>
-          <button
-            type="submit"
-            className="inline-flex justify-center items-center text-[13px] rounded px-[25px] py-[10px] bg-[#5360ec] hover:bg-[#434dbb] transition-colors "
-          >
-            Create
-          </button>
-        </Dialog.Close>
-      </div>
-      <Dialog.Close asChild>
+
+      <div className="flex mt-6 justify-end">
         <button
-          type="button"
-          className="absolute top-[10px] right-[10px] inline-flex justify-center items-center rounded-full w-6 h-6 text-light-600 hover:text-light-800 transition-colors"
-          aria-label="Close"
+          type="submit"
+          className="inline-flex justify-center items-center text-[13px] rounded px-[25px] py-[10px] bg-[#5360ec] hover:bg-[#434dbb] transition-colors "
         >
-          <X />
+          Create
         </button>
-      </Dialog.Close>
+      </div>
     </form>
   );
 };

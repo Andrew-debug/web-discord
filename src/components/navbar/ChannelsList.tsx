@@ -1,3 +1,4 @@
+import { getServerSession } from "next-auth";
 import DialogDemo from "../ui/DialogDemo";
 import NavbarLink from "./NavbarLink";
 import { IChannel } from "@/types";
@@ -6,7 +7,11 @@ const ChannelsList = async () => {
   const response = (await fetch(
     "http://localhost:3000/api/discordServers"
   ).then((res) => res.json())) as IChannel[];
-
+  // const session = await getServerSession();
+  // const lmao = await fetch("http://localhost:3000/api/leTest").then((res) =>
+  //   res.json()
+  // );
+  // const { result } = lmao;
   return (
     <div>
       <div className="my-2 channel-icon">
@@ -18,6 +23,10 @@ const ChannelsList = async () => {
         />
       </div>
       <div className="w-8 h-[2px] bg-dark-400 rounded-[1px] mx-auto my-[2px]"></div>
+
+      {/* {session &&
+        result.map((item, index) => <div key={index}>{item.data}</div>)} */}
+
       {Object.values(response).map((item, index) => (
         <NavbarLink
           type="channelLink"
