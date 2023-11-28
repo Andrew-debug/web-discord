@@ -2,24 +2,17 @@ import { getServerSession } from "next-auth";
 import DialogDemo from "../ui/DialogDemo";
 import NavbarLink from "./NavbarLink";
 import { IChannel } from "@/types";
-import { Database } from "@/lib/actions";
+import { fetchUserChannels } from "@/lib/actions";
 
 const ChannelsList = async () => {
   const response = (await fetch(
     "http://localhost:3000/api/discordServers"
   ).then((res) => res.json())) as IChannel[];
   const session = await getServerSession();
-  console.log(session);
-  // const lmao = await fetch("http://localhost:3000/api/leTest").then((res) =>
-  //   res.json()
-  // );
-  const lmao = async () => {
-    const db = new Database();
-    await db.connectToDatabase();
-    return await db.user.getUserSubscriptions();
-  };
-  const channelToRender = await lmao();
-  // const { result } = lmao();
+
+  const channelsToRender = await fetchUserChannels(
+    session?.user?.email as string
+  ).then((data) => data);
   return (
     <div>
       <div className="my-2 channel-icon">
@@ -33,7 +26,8 @@ const ChannelsList = async () => {
       <div className="w-8 h-[2px] bg-dark-400 rounded-[1px] mx-auto my-[2px]"></div>
 
       {session &&
-        channelToRender.map((item, index) => (
+        channelsToRender &&
+        channelsToRender.map((item, index) => (
           <div key={index}>{item.name}</div>
         ))}
 

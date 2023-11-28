@@ -10,3 +10,9 @@ export interface IMessageProps {
   date: string;
   message: string;
 }
+export interface UserProfile {
+  name: string;
+  email: string;
+  avatar: string;
+  channelsSubscription: [] | null;
+}
