@@ -8,14 +8,13 @@ import { Hash } from "lucide-react";
 import { redirect } from "next/navigation";
 interface IChannelMain {
   searchParams: { [key: string]: string | string[] | undefined };
-  response: { [key: string]: IChannel };
-  id: string;
+  channelData: IChannel | undefined;
 }
 
-const ChannelMain = ({ searchParams, response, id }: IChannelMain) => {
-  if (!response[id]) return <>server 404</>;
+const ChannelMain = ({ searchParams, channelData }: IChannelMain) => {
+  if (!channelData) return <>server 404</>;
   if (Object.keys(searchParams).length < 1)
-    redirect(`${response[id].id}?section=general`);
+    redirect(`${channelData._id}?section=general`);
 
   return (
     <section className="w-full h-[100vh] flex flex-col">
@@ -32,7 +31,7 @@ const ChannelMain = ({ searchParams, response, id }: IChannelMain) => {
           >
             <div className="mb-3 px-4 ">
               {Object.entries(
-                response[id].sections[searchParams.section as string]
+                channelData.sections[searchParams.section as string]
               ).map(([date, messages]) => (
                 <div
                   key={date}

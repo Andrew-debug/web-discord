@@ -58,37 +58,38 @@ const HoverCardComponent = ({
   //   lmao();
   // }, []);
 
-  const handleClick1 = async () => {
-    const realm_app = process.env.NEXT_PUBLIC_REALM_APP_ID ?? "";
-    const app = new Realm.App({ id: realm_app });
-    const credentials = Realm.Credentials.anonymous();
-    try {
-      const user = await app.logIn(credentials);
-      console.log(app);
-      const allData = await user.functions.getAllServers();
-      console.log(allData);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const handleClick = async () => {
-    const realm_app = process.env.NEXT_PUBLIC_REALM_APP_ID ?? "";
-    const app = new Realm.App({ id: realm_app });
-    const credentials = Realm.Credentials.anonymous();
-    try {
-      const user = await app.logIn(credentials);
-      const allData = await user.functions.getAllServers();
-      const id = await allData.result[1]._id.toString();
-      console.log(id);
-      await user.functions.deleteServer(id);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const handleClick1 = async () => {
+  //   const realm_app = process.env.NEXT_PUBLIC_REALM_APP_ID ?? "";
+  //   const app = new Realm.App({ id: realm_app });
+  //   const credentials = Realm.Credentials.anonymous();
+  //   try {
+  //     const user = await app.logIn(credentials);
+  //     console.log(app);
+  //     const allData = await user.functions.getAllServers();
+  //     console.log(allData);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  // const handleClick = async () => {
+  //   const realm_app = process.env.NEXT_PUBLIC_REALM_APP_ID ?? "";
+  //   const app = new Realm.App({ id: realm_app });
+  //   const credentials = Realm.Credentials.anonymous();
+  //   try {
+  //     const user = await app.logIn(credentials);
+  //     const allData = await user.functions.getAllServers();
+  //     const id = await allData.result[1]._id.toString();
+  //     console.log(id);
+  //     await user.functions.deleteServer(id);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   return (
     <>
-      {/* <button onClick={handleClick1}>show</button>
-      <span>||</span>
+      {/* <button onClick={handleClick1}>sub</button> */}
+      {/* <span>||</span>
       <button onClick={handleClick}>delete</button> */}
       <HoverCard.Root openDelay={50} closeDelay={50}>
         <HoverCard.Trigger asChild>

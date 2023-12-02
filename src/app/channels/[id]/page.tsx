@@ -1,6 +1,8 @@
-import { headers } from "next/headers";
 import ChannelMain from "@/components/channelUI/ChannelMain";
 import ChannelNavbar from "@/components/channelUI/ChannelNavbar";
+import { getServerSession } from "next-auth";
+import { endpoints } from "@/lib/actions";
+import { IChannel } from "@/types";
 
 const page = async ({
   params: { id },
@@ -9,15 +11,27 @@ const page = async ({
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
-  // idk why headers needed, works fine without it
-  const response = await fetch("http://localhost:3000/api/discordServers", {
-    method: "GET",
-    headers: headers(),
-  }).then((res) => res.json());
+  const session = await getServerSession();
+  // const channelData = (await fetchUserChannels(
+  //   session?.user?.email as string
+  // ).then((data) =>
+  //   data?.find((channel) => channel._id.toString() === id)
+  // )) as IChannel;
+
+  const channelData = (await endpoints.user
+    .getUserSubscriptions(session?.user?.email as string)
+    .then((data) =>
+      data?.find((channel) => channel._id.toString() === id)
+    )) as IChannel;
+
+  // const channelData = await endpoints.user
+  //   .getUserSubscriptions(session?.user?.email as string)
+  //   .then((data) => data?.find((channel) => channel._id.toString() === id));
+  // console.log(channelData);
   return (
     <div className="flex w-full overflow-hidden">
-      <ChannelNavbar searchParams={searchParams} response={response} id={id} />
-      <ChannelMain searchParams={searchParams} response={response} id={id} />
+      <ChannelNavbar searchParams={searchParams} channelData={channelData} />
+      <ChannelMain searchParams={searchParams} channelData={channelData} />
     </div>
   );
 };

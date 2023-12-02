@@ -1,8 +1,9 @@
+import { ObjectId } from "mongodb";
 export interface IChannel {
-  id: string;
+  _id: ObjectId;
   name: string;
   sections: { [key: string]: { [key: string]: IMessageProps[] } };
-  defaultImg: string;
+  image: string;
 }
 export interface IMessageProps {
   avatar: string;

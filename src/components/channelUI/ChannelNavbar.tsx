@@ -6,16 +6,10 @@ import ActionPanel from "../ActionPanel";
 
 interface IChannelNavbar {
   searchParams: { [key: string]: string | string[] | undefined };
-  response: { [key: string]: IChannel };
-  id: string;
+  channelData: IChannel | undefined;
 }
 
-const ChannelNavbar = async ({
-  searchParams,
-  response,
-  id,
-}: IChannelNavbar) => {
-  const channelData = response[id];
+const ChannelNavbar = async ({ searchParams, channelData }: IChannelNavbar) => {
   const selectedSection = searchParams.section;
   if (!channelData) return <></>;
   return (

@@ -93,6 +93,7 @@ const ChannelForm = ({
       console.error(error);
     }
   };
+
   return (
     <form onSubmit={handleCreateChannel}>
       <fieldset className="flex justify-center mb-6">
