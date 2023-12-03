@@ -1,12 +1,7 @@
-import Testbtn from "@/components/navbar/Testbtn";
 import UserNavbar from "@/components/userUI/UserNavbar";
-import { endpoints } from "@/lib/actions";
-import { getServerSession } from "next-auth";
 import Link from "next/link";
 
-export default async function Home() {
-  const session = await getServerSession();
-
+export default function Home() {
   return (
     <div className="flex w-full overflow-hidden">
       <UserNavbar />

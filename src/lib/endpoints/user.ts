@@ -1,6 +1,6 @@
 import { serverCollection, userCollection } from "@/utils";
-import { endpoints } from "../actions";
 import mongoPool from "../mongodb";
+import { channel } from "./channel";
 
 export const user = {
   createUser: async function (name: string, email: string, image: string) {
@@ -28,14 +28,14 @@ export const user = {
     if (!user) return;
 
     let db = await mongoPool;
-    const channel = await endpoints.channel.findChannel(channelId); // fix
+    const discrodChannel = await channel.findChannel(channelId);
 
-    if (!channel) return;
+    if (!discrodChannel) return;
     await db.collection(userCollection).updateOne(
       { _id: user._id },
       {
         $addToSet: {
-          channelsSubscription: channel._id,
+          channelsSubscription: discrodChannel._id,
         },
       }
     );
