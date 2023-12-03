@@ -1,8 +1,6 @@
+import { serverCollection } from "@/utils";
 import mongoPool from "../mongodb";
 import { ObjectId } from "mongodb";
-
-const userCollection = "user";
-const serverCollection = "servers";
 
 export const channel = {
   createChannel: async function (channelName: string, image: string) {

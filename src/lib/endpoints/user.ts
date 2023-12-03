@@ -1,8 +1,6 @@
+import { serverCollection, userCollection } from "@/utils";
 import { endpoints } from "../actions";
 import mongoPool from "../mongodb";
-
-const userCollection = "user";
-const serverCollection = "servers";
 
 export const user = {
   createUser: async function (name: string, email: string, image: string) {
